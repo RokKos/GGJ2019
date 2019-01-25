@@ -21,6 +21,10 @@ public class CharacterController : MonoBehaviour
     private const string mouseX = "Mouse X";
     private const string mouseY = "Mouse Y";
 
+    [Header("Animation")]
+    [SerializeField] Animator animator;
+    private const string flipCamera = "FlipCamera";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,8 @@ public class CharacterController : MonoBehaviour
         MovePlayer();
         RotatePlayer();
         RotateCamera();
+        CheckGravity();
+
     }
 
     private void RotatePlayer() {
@@ -76,9 +82,18 @@ public class CharacterController : MonoBehaviour
 
         if (moveDirection.sqrMagnitude > 0) {
             moveDirection.Normalize();
-            rigidbody.velocity = speed * moveDirection;
+            rigidbody.velocity = speed * moveDirection; 
         }
     }
+
+    void CheckGravity() {
+        if (Input.GetKey(KeyCode.G)) {
+
+            Physics.gravity = new Vector3(0, -1 * Physics.gravity.y, 0f);
+            animator.SetTrigger(flipCamera);
+        }
+    }
+
 
 
 
