@@ -23,14 +23,16 @@ public class CharacterController : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] Animator animator;
-    private const string flipCamera = "FlipCamera";
+    private const string flipCameraUp = "FlipCameraUp";
+    private const string flipCameraDown = "FlipCameraDown";
+    private bool cameraUp = false;
 
     // Start is called before the first frame update
     void Start()
     {
 
         Cursor.lockState = CursorLockMode.Locked;
-
+        cameraUp = false;
     }
 
     // Update is called once per frame
@@ -87,10 +89,15 @@ public class CharacterController : MonoBehaviour
     }
 
     void CheckGravity() {
-        if (Input.GetKey(KeyCode.G)) {
-
+        if (Input.GetKeyDown(KeyCode.G)) {
             Physics.gravity = new Vector3(0, -1 * Physics.gravity.y, 0f);
-            animator.SetTrigger(flipCamera);
+            if (!cameraUp) {
+                animator.SetTrigger(flipCameraUp);
+            } else{
+                animator.SetTrigger(flipCameraDown);
+            }
+            
+
         }
     }
 
