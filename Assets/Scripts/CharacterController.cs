@@ -1,9 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
-{
+public class CharacterController : MonoBehaviour {
     [Header("Moving")]
     [SerializeField] Rigidbody rigidbody;
     [SerializeField] float speed;
@@ -20,6 +19,8 @@ public class CharacterController : MonoBehaviour
 
     [Header( "Pickup" )]
     [Tooltip("Where the picked up object is held.")]
+    [Tooltip("Max angle for camera rotation")]
+    [SerializeField] float cameraRotationAgleMax;
     [SerializeField] Transform pickupPosition;
     [Tooltip("Camera crosshair.")]
     [SerializeField] GameObject pickupCrosshair;
@@ -69,6 +70,16 @@ public class CharacterController : MonoBehaviour
         int rotation = cameraUp ? 1 : -1;
         Vector3 eulerAngles = mainCamera.transform.eulerAngles;
         eulerAngles.x += sensitivityY * rotation * Input.GetAxis(mouseY);
+
+        // This hack is here because Unity has weird euler angles that loop around and doens't differentiate between negative and positive sign
+        if (eulerAngles.x > 300 && eulerAngles.x - 360 < -cameraRotationAgleMax + 5) {
+                Debug.Log("Less Than");
+               eulerAngles.x = -cameraRotationAgleMax + 5;
+        }
+        else if (eulerAngles.x > cameraRotationAgleMax + 5 && eulerAngles.x < 300)  {
+            Debug.Log("More Than");
+            eulerAngles.x = cameraRotationAgleMax + 5;
+        }
         mainCamera.transform.eulerAngles = eulerAngles;
     }
 
