@@ -14,6 +14,21 @@ public class GameController : MonoBehaviour
     [SerializeField] List<GameObject> puzzle4Items = new List<GameObject>();
     [SerializeField] List<GameObject> puzzle5Items = new List<GameObject>();
 
+    private void Start()
+    {
+        ResetPortraits();
+    }
+
+    private void ResetPortraits()
+    {
+        foreach (var portrait in puzzlePortraits)
+        {
+            portrait.SetActive( false );
+        }
+        // activate the first puzzle
+        puzzlePortraits[0].SetActive( true );
+    }
+
     public void SolvePuzzle(GameObject whichPuzzle, GameObject collidingObj)
     {
         int puzzleIndex = puzzlePortraits.FindIndex(p => p == whichPuzzle);
