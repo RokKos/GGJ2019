@@ -20,6 +20,9 @@ public class CharacterController : MonoBehaviour {
     [Tooltip("Max angle for camera rotation")]
     [SerializeField] float cameraRotationAgleMax;
 
+    [SerializeField] Transform flashLightTransform;
+
+
     [Header( "Pickup" )]
     [Tooltip("Where the picked up object is held.")]
     [SerializeField] Transform pickupPosition;
@@ -56,6 +59,7 @@ public class CharacterController : MonoBehaviour {
         MovePlayer();
         RotatePlayer();
         RotateCamera();
+        RotateLight();
         DropItem();
         PickupItem();
         CheckGravity();
@@ -83,6 +87,23 @@ public class CharacterController : MonoBehaviour {
             eulerAngles.x = cameraRotationAgleMax + 5;
         }
         mainCamera.transform.eulerAngles = eulerAngles;
+    }
+
+    private void RotateLight() {
+        int rotation = cameraUp ? 1 : -1;
+        Vector3 eulerAngles = flashLightTransform.eulerAngles;
+        eulerAngles.x += sensitivityY * Input.GetAxis(mouseY);
+
+        // This hack is here because Unity has weird euler angles that loop around and doens't differentiate between negative and positive sign
+        if (eulerAngles.x > 300 && eulerAngles.x - 360 < -cameraRotationAgleMax + 5) {
+            Debug.Log("Less Than");
+            eulerAngles.x = -cameraRotationAgleMax + 5;
+        } else if (eulerAngles.x > cameraRotationAgleMax + 5 && eulerAngles.x < 300) {
+            Debug.Log("More Than");
+            eulerAngles.x = cameraRotationAgleMax + 5;
+        }
+
+        flashLightTransform.eulerAngles = eulerAngles;
     }
 
     private void MovePlayer() {
