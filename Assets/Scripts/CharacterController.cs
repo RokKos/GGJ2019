@@ -19,8 +19,11 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float sensitivityY;
 
     [Header( "Pickup" )]
+    [Tooltip("Where the picked up object is held.")]
     [SerializeField] Transform pickupPosition;
-    [Tooltip( "A random transform to parent dropped pickup objects" )]
+    [Tooltip("Camera crosshair.")]
+    [SerializeField] GameObject pickupCrosshair;
+    [Tooltip( "A random transform to parent dropped pickup objects. If none, objects will just be added back to the scene." )]
     [SerializeField] Transform pickupObjects;
 
     private const string mouseX = "Mouse X";
@@ -38,7 +41,7 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         Cursor.lockState = CursorLockMode.Locked;
         cameraUp = true;
     }
@@ -119,7 +122,7 @@ public class CharacterController : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 fwd = mainCamera.transform.TransformDirection( Vector3.forward );
-            if ( pickedupItem == null && Physics.Raycast( mainCamera.transform.position, fwd, out hit ) )
+            if ( Physics.Raycast( mainCamera.transform.position, fwd, out hit ) )
             {
                 if ( hit.transform.gameObject.tag == pickupTag )
                 {
@@ -129,6 +132,12 @@ public class CharacterController : MonoBehaviour
                     if ( puRb )
                         Destroy( puRb );
                     hit.transform.parent = pickupPosition;
+                    if (pickupCrosshair != null)
+                        pickupCrosshair.SetActive( false );
+                }
+                else
+                {
+                    Debug.Log( "Something else was hit: " + hit.transform.gameObject.name );
                 }
             }
         }
@@ -138,9 +147,12 @@ public class CharacterController : MonoBehaviour
     {
         if ( pickedupItem != null && Input.GetMouseButtonDown( 1 ) )
         {
+            Debug.Log( "dropped " + pickedupItem.name );
             pickedupItem.AddComponent<Rigidbody>();
             pickedupItem.transform.parent = pickupObjects;
             pickedupItem = null;
+            if (pickupCrosshair != null)
+                pickupCrosshair.SetActive( true );
         }
     }
 
