@@ -28,6 +28,8 @@ public class CharacterController : MonoBehaviour {
     [Tooltip( "A random transform to parent dropped pickup objects. If none, objects will just be added back to the scene." )]
     [SerializeField] Transform pickupObjects;
 
+    [SerializeField] float rayCastDistance;
+
     private const string mouseX = "Mouse X";
     private const string mouseY = "Mouse Y";
     private const string pickupTag = "pickup";
@@ -134,7 +136,7 @@ public class CharacterController : MonoBehaviour {
         {
             RaycastHit hit;
             Vector3 fwd = mainCamera.transform.TransformDirection( Vector3.forward );
-            if ( Physics.Raycast( mainCamera.transform.position, fwd, out hit ) )
+            if ( Physics.Raycast( mainCamera.transform.position, fwd, out hit, rayCastDistance) )
             {
                 if ( hit.transform.gameObject.tag == pickupTag )
                 {

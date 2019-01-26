@@ -2113,5 +2113,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2689420609963095442, guid: b6f7477a01abc2244bb7087dbaeb6af2,
+        type: 3}
+      propertyPath: pickupObjects
+      value: 
+      objectReference: {fileID: 2032482599}
+    - target: {fileID: 2689420609963095442, guid: b6f7477a01abc2244bb7087dbaeb6af2,
+        type: 3}
+      propertyPath: rayCastDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689420609963095440, guid: b6f7477a01abc2244bb7087dbaeb6af2,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f7477a01abc2244bb7087dbaeb6af2, type: 3}
