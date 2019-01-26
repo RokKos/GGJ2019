@@ -17,10 +17,11 @@ public class CharacterController : MonoBehaviour {
     [Tooltip("Sensitivity for camera rotation on Y axis")]
     [SerializeField] float sensitivityY;
 
-    [Header( "Pickup" )]
-    [Tooltip("Where the picked up object is held.")]
     [Tooltip("Max angle for camera rotation")]
     [SerializeField] float cameraRotationAgleMax;
+
+    [Header( "Pickup" )]
+    [Tooltip("Where the picked up object is held.")]
     [SerializeField] Transform pickupPosition;
     [Tooltip("Camera crosshair.")]
     [SerializeField] GameObject pickupCrosshair;
