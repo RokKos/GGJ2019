@@ -28,7 +28,7 @@ public class CharacterController : MonoBehaviour {
     [Tooltip( "A random transform to parent dropped pickup objects. If none, objects will just be added back to the scene." )]
     [SerializeField] Transform pickupObjects;
 
-    [SerializeField] float rayCastDistance;
+    [SerializeField] float rayCastDistance = 2.0f;
 
     private const string mouseX = "Mouse X";
     private const string mouseY = "Mouse Y";
@@ -59,7 +59,6 @@ public class CharacterController : MonoBehaviour {
         DropItem();
         PickupItem();
         CheckGravity();
-
     }
 
     private void RotatePlayer() {
