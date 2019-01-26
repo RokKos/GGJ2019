@@ -1,19 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PuzzleScript : MonoBehaviour
 {
-    GameController game;
+    [SerializeField] GameController game;
 
-    private void Start()
+    private void OnTriggerEnter( Collider other )
     {
-        game = FindObjectOfType<GameController>();
-    }
-
-    private void OnCollisionEnter( Collision collision )
-    {
-        // do smth smh
-        game.SolvePuzzle( this.gameObject, collision.gameObject );
+        Debug.Log( "trigger entered!" );
+        if ( other != null )
+        {
+            game.SolvePuzzle( this.gameObject, other.gameObject );
+        }
     }
 }

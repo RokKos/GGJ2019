@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3949943836904534916}
   - component: {fileID: 3949943836904534919}
   - component: {fileID: 3949943836904534917}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: StaticNoise
   m_TagString: Untagged
   m_Icon: {fileID: 0}

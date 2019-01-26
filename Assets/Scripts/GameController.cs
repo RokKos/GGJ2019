@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -59,6 +58,7 @@ public class GameController : MonoBehaviour
             if ( puzzleIndex < puzzlePortraits.Count - 1 )
             {
                 puzzlePortraits[puzzleIndex + 1].SetActive( true );
+                // TODO: remove puzzle piece from the world/hand and setup the new picture in the old portrait
             }
             else
             {
