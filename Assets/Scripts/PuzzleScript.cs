@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PuzzleScript : MonoBehaviour
 {
-    [SerializeField] int puzzleNo;
-
     GameController game;
 
     private void Start()

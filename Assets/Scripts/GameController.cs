@@ -21,12 +21,15 @@ public class GameController : MonoBehaviour
 
     private void ResetPortraits()
     {
-        foreach (var portrait in puzzlePortraits)
+        if ( puzzlePortraits.Count > 0 )
         {
-            portrait.SetActive( false );
+            foreach ( var portrait in puzzlePortraits )
+            {
+                portrait.SetActive( false );
+            }
+            // activate the first puzzle
+            puzzlePortraits[0].SetActive( true );
         }
-        // activate the first puzzle
-        puzzlePortraits[0].SetActive( true );
     }
 
     public void SolvePuzzle(GameObject whichPuzzle, GameObject collidingObj)
@@ -48,7 +51,7 @@ public class GameController : MonoBehaviour
             default:
                 goCheck = null; Debug.LogError("something went wrong while checking for puzzle solutions"); break;
         }
-        if ( goCheck.Contains( collidingObj ) )
+        if ( goCheck != null && goCheck.Contains( collidingObj ) )
         {
             Debug.Log("you solved the puzzle #" + ( puzzleIndex + 1 ) );
             // to next puzzle
