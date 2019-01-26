@@ -90,7 +90,7 @@ public class CharacterController : MonoBehaviour {
     }
 
     private void RotateLight() {
-        int rotation = cameraUp ? 1 : -1;
+        int rotation = cameraUp ? -1 : 1;
         Vector3 eulerAngles = flashLightTransform.eulerAngles;
         eulerAngles.x += sensitivityY * Input.GetAxis(mouseY);
 
