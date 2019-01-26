@@ -33,14 +33,14 @@ public class CharacterController : MonoBehaviour
     [SerializeField] Animator animator;
     private const string flipCameraUp = "FlipCameraUp";
     private const string flipCameraDown = "FlipCameraDown";
-    private bool cameraUp = false;
+    private bool cameraUp = true;
 
     // Start is called before the first frame update
     void Start()
     {
 
         Cursor.lockState = CursorLockMode.Locked;
-        cameraUp = false;
+        cameraUp = true;
     }
 
     // Update is called once per frame
@@ -56,14 +56,16 @@ public class CharacterController : MonoBehaviour
     }
 
     private void RotatePlayer() {
+        int rotation = cameraUp ? 1 : -1;
         Vector3 eulerAngles = transform.eulerAngles;
-        eulerAngles.y += sensitivityX * Input.GetAxis(mouseX);
+        eulerAngles.y += sensitivityX * rotation * Input.GetAxis(mouseX);
         transform.eulerAngles = eulerAngles;
     }
 
     private void RotateCamera() {
+        int rotation = cameraUp ? 1 : -1;
         Vector3 eulerAngles = mainCamera.transform.eulerAngles;
-        eulerAngles.x += sensitivityY * Input.GetAxis(mouseY);
+        eulerAngles.x += sensitivityY * rotation * Input.GetAxis(mouseY);
         mainCamera.transform.eulerAngles = eulerAngles;
     }
 
@@ -106,8 +108,8 @@ public class CharacterController : MonoBehaviour
             } else{
                 animator.SetTrigger(flipCameraDown);
             }
-            
 
+            cameraUp = !cameraUp;   
         }
     }
 
