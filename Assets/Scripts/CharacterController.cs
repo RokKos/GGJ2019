@@ -18,8 +18,16 @@ public class CharacterController : MonoBehaviour
     [Tooltip("Sensitivity for camera rotation on Y axis")]
     [SerializeField] float sensitivityY;
 
+    [Header( "Pickup" )]
+    [SerializeField] Transform pickupPosition;
+    [Tooltip( "A random transform to parent dropped pickup objects" )]
+    [SerializeField] Transform pickupObjects;
+
     private const string mouseX = "Mouse X";
     private const string mouseY = "Mouse Y";
+    private const string pickupTag = "pickup";
+
+    GameObject pickedupItem;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +43,8 @@ public class CharacterController : MonoBehaviour
         MovePlayer();
         RotatePlayer();
         RotateCamera();
+        DropItem();
+        PickupItem();
     }
 
     private void RotatePlayer() {
@@ -80,7 +90,35 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private void PickupItem()
+    {
+        if ( pickedupItem == null && Input.GetMouseButtonDown( 0 ) )
+        {
+            RaycastHit hit;
+            Vector3 fwd = mainCamera.transform.TransformDirection( Vector3.forward );
+            if ( pickedupItem == null && Physics.Raycast( mainCamera.transform.position, fwd, out hit ) )
+            {
+                if ( hit.transform.gameObject.tag == pickupTag )
+                {
+                    Debug.Log( "You picked up that " + hit.transform.gameObject.name + " object." );
+                    pickedupItem = hit.transform.gameObject;
+                    var puRb = pickedupItem.GetComponent<Rigidbody>();
+                    if ( puRb )
+                        Destroy( puRb );
+                    hit.transform.parent = pickupPosition;
+                }
+            }
+        }
+    }
 
-
+    private void DropItem()
+    {
+        if ( pickedupItem != null && Input.GetMouseButtonDown( 1 ) )
+        {
+            pickedupItem.AddComponent<Rigidbody>();
+            pickedupItem.transform.parent = pickupObjects;
+            pickedupItem = null;
+        }
+    }
 
 }
