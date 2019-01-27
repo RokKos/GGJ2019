@@ -1,17 +1,19 @@
 fileFormatVersion: 2
-guid: 749286b92bc60db4fb5dd17f6741afe8
+guid: 11f0cb415a4e2d544b6ff37a3cdf71cd
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: dmy_LightYellow
-    2100002: dmy_Biege
-    2100004: dmy_Black
-    2100006: dmy_DarkRed
+    2100000: dmy_Gray
+    2100002: dmy_DarkGreen
+    2100004: dmy_DarkRed
+    2100006: dmy_Blue
+    2100008: dmy_Black
     2300000: //RootNode
     3300000: //RootNode
-    4300000: TeddYBear
+    4300000: Mesh
+    4300002: CarKeys
   externalObjects: {}
   materials:
     importMaterials: 1

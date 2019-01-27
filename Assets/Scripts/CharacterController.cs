@@ -64,7 +64,7 @@ public class CharacterController : MonoBehaviour {
         RotateLight();
         DropItem();
         PickupItem();
-        CheckGravity();
+        //CheckGravity(); Debug only
     }
 
     private void RotatePlayer() {

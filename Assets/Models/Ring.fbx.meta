@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: 749286b92bc60db4fb5dd17f6741afe8
+guid: 7d8460b602bc2b14bac4ab981f2fc812
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: dmy_LightYellow
-    2100002: dmy_Biege
-    2100004: dmy_Black
-    2100006: dmy_DarkRed
+    2100000: dmy_DarkYellow
+    2100002: dmy_LightGreen.004
     2300000: //RootNode
     3300000: //RootNode
-    4300000: TeddYBear
+    4300000: Ring
   externalObjects: {}
   materials:
     importMaterials: 1
