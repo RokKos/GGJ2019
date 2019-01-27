@@ -35,4 +35,14 @@ public class UIManager : MonoBehaviour {
         MainMenuPanel.SetActive(true);
         gamePaused = true;
     }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            PauseGame();
+        }
+    }
+
+    public void ExitGame() {
+        Application.Quit();
+    }
 }
