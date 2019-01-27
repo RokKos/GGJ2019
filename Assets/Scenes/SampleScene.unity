@@ -438,7 +438,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 726311965}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &240332090
 BoxCollider:
@@ -1129,7 +1129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 521277805, guid: 15a753e710187944789ed2b570fc3a4a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 521277805, guid: 15a753e710187944789ed2b570fc3a4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1532,8 +1532,8 @@ Transform:
   - {fileID: 1542374551}
   - {fileID: 1478290109}
   - {fileID: 1946693102}
-  - {fileID: 3807657760062604460}
   - {fileID: 240332089}
+  - {fileID: 3807657760062604460}
   - {fileID: 1140350576}
   - {fileID: 219670573}
   - {fileID: 571608300}
@@ -2195,7 +2195,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1081058218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,7 +2379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1089551257, guid: d317fba5e1cf2554db19586eab7cbb8a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1089551257, guid: d317fba5e1cf2554db19586eab7cbb8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2653,6 +2653,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainMenuPanel: {fileID: 2080310575}
+  invertControllsToggle: {fileID: 1053722780}
+  characterController: {fileID: 1254552287}
 --- !u!1 &1254552282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2689420609963095438, guid: b6f7477a01abc2244bb7087dbaeb6af2,
@@ -2953,6 +2955,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 1341442281, guid: 597741e58faf5894dbfb75840173b2a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1341442280, guid: 597741e58faf5894dbfb75840173b2a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.576798
@@ -2983,7 +2989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1341442280, guid: 597741e58faf5894dbfb75840173b2a6, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341442280, guid: 597741e58faf5894dbfb75840173b2a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4783,7 +4789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975532355, guid: 9c20c2fb3796cc44999b598033f0c81a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1975532355, guid: 9c20c2fb3796cc44999b598033f0c81a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5011,6 +5017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room-final1
       objectReference: {fileID: 0}
+    - target: {fileID: 292617862, guid: 9be4be84fbb4f4042bd8c69987f3fe35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1245977781, guid: 9be4be84fbb4f4042bd8c69987f3fe35, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5041,7 +5051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245977781, guid: 9be4be84fbb4f4042bd8c69987f3fe35, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1245977781, guid: 9be4be84fbb4f4042bd8c69987f3fe35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

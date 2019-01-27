@@ -27,12 +27,12 @@ public class CharacterController : MonoBehaviour {
     [SerializeField] int verticalSwitch = -1;
 
 
-    [Header( "Pickup" )]
+    [Header("Pickup")]
     [Tooltip("Where the picked up object is held.")]
     [SerializeField] Transform pickupPosition;
     [Tooltip("Camera crosshair.")]
     [SerializeField] GameObject pickupCrosshair;
-    [Tooltip( "A random transform to parent dropped pickup objects. If none, objects will just be added back to the scene." )]
+    [Tooltip("A random transform to parent dropped pickup objects. If none, objects will just be added back to the scene.")]
     [SerializeField] Transform pickupObjects;
 
     [SerializeField] float rayCastDistance = 2.0f;
@@ -48,6 +48,10 @@ public class CharacterController : MonoBehaviour {
     private const string flipCameraUp = "FlipCameraUp";
     private const string flipCameraDown = "FlipCameraDown";
     private bool cameraUp = true;
+
+    public void SetVerticalSwitch(int vertical) {
+        verticalSwitch = vertical;
+    }
 
     // Start is called before the first frame update
     void Start()
