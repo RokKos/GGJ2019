@@ -339,6 +339,7 @@ MonoBehaviour:
   sensitivityY: 2
   cameraRotationAgleMax: 60
   flashLightTransform: {fileID: 938265954}
+  verticalSwitch: 1
   pickupPosition: {fileID: 1484728660}
   pickupCrosshair: {fileID: 746356816}
   pickupObjects: {fileID: 0}
@@ -354,7 +355,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
+  m_Radius: 0.05
   m_Height: 3.8076653
   m_Direction: 1
   m_Center: {x: 0, y: 0.2761886, z: 0}

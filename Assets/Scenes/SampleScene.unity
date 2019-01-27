@@ -4528,6 +4528,11 @@ PrefabInstance:
       propertyPath: pickupObjects
       value: 
       objectReference: {fileID: 2032482599}
+    - target: {fileID: 2689420609963095441, guid: b6f7477a01abc2244bb7087dbaeb6af2,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f7477a01abc2244bb7087dbaeb6af2, type: 3}
 --- !u!1001 &3807657760062604459
