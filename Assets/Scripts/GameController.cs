@@ -106,7 +106,9 @@ public class GameController : MonoBehaviour
 
     private void PlayEnding()
     {
+        //TODO: do proper endgame stuff
         Debug.Log( "YOU WIN" );
+        UnityEngine.SceneManagement.SceneManager.LoadScene( this.gameObject.scene.buildIndex );
     }
 
     public GameObject GetCurrentPuzzlePiece() {

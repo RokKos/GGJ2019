@@ -9,6 +9,18 @@ public class SFXController : MonoBehaviour
     [SerializeField] float maxTick = 10.0f;
     [SerializeField] float currentTick;
 
+    [Header( "Volume" )]
+    [SerializeField] float minVolume = 0.1f;
+    [SerializeField] float maxVolume = 0.5f;
+
+    [Header( "Pitch" )]
+    [SerializeField] float minPitch = 0.1f;
+    [SerializeField] float maxPitch = 0.9f;
+
+    [Header( "Stereo Pan" )]
+    [SerializeField] float minPan = -1.0f;
+    [SerializeField] float maxPan = 1.0f;
+
     [Header("Creepy SFX")]
     [SerializeField] List<AudioSource> creepyAudioSources;
     [SerializeField] List<AudioClip> creepyAudioClips;
@@ -20,20 +32,29 @@ public class SFXController : MonoBehaviour
     AudioSource currentRandomSource;
     AudioClip currentRandomClip;
 
+    [Header( "BG Music" )]
+    [SerializeField] AudioSource bgMusicSource;
+
     private void Start()
     {
         currentTick = Random.Range( minTick, maxTick );
         StartCoroutine( Tick(currentTick) );
+
+        bgMusicSource.loop = true;
+        bgMusicSource.Play();
     }
 
-    private void PlayRandomStaticSound()
+    public void PlayRandomStaticSound(AudioSource givenSource = null)
     {
-        var sourceIndex = Random.Range( 0, staticAudioSources.Count - 1 );
+        if ( givenSource == null )
+        {
+            var sourceIndex = Random.Range( 0, staticAudioSources.Count - 1 );
+            givenSource = staticAudioSources[sourceIndex];
+        }
         var clipIndex = Random.Range( 0, staticAudioClips.Count - 1 );
-
-        var source = staticAudioSources[sourceIndex];
-        source.clip = staticAudioClips[clipIndex];
-        source.Play();
+        givenSource.clip = staticAudioClips[clipIndex];
+        Debug.Log("STATIC clip: " + givenSource.clip.name);
+        givenSource.Play();
     }
 
     private void StopRandomSounds()
@@ -50,6 +71,8 @@ public class SFXController : MonoBehaviour
         currentRandomSource = creepyAudioSources[sourceIndex];
         currentRandomClip = creepyAudioClips[clipIndex];
         currentRandomSource.clip = currentRandomClip;
+        RandomizeSound( currentRandomSource );
+        Debug.Log( "current random sound: " + currentRandomSource.clip + " (vol: " + currentRandomSource.volume + " - pitch: " + currentRandomSource.pitch + " - stereopan: " + currentRandomSource.panStereo + ")" );
         currentRandomSource.Play();
         StartCoroutine( WaitForAudioCompleted() );
     }
@@ -73,5 +96,26 @@ public class SFXController : MonoBehaviour
         yield return new WaitForSeconds( currentRandomClip.length );
         Debug.Log("waited for " + currentRandomClip.length + " seconds (" + currentRandomClip.name + " -clip- from " + currentRandomSource.name + " -source-).");
         StartCoroutine( Tick( currentTick ) );
+    }
+
+    private void RandomizeSound(AudioSource source, bool randomizeVolume = true, bool randomizePitch = true, bool randomizeStereoPan = true)
+    {
+        if ( randomizeVolume )
+        {
+            var volume = Random.Range( minVolume, maxVolume );
+            source.volume = volume;
+        }
+
+        if ( randomizePitch )
+        {
+            var pitch = Random.Range( minPitch, maxPitch );
+            source.pitch = pitch;
+        }
+
+        if ( randomizeStereoPan )
+        {
+            var stereoPan = Random.Range( minPan, maxPan );
+            source.panStereo = stereoPan;
+        }
     }
 }

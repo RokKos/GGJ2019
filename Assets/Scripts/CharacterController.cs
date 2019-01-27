@@ -93,11 +93,11 @@ public class CharacterController : MonoBehaviour {
 
         // This hack is here because Unity has weird euler angles that loop around and doens't differentiate between negative and positive sign
         if (eulerAngles.x > 300 && eulerAngles.x - 360 < -cameraRotationAgleMax + 5) {
-                Debug.Log("Less Than");
+                //Debug.Log("Less Than");
                eulerAngles.x = -cameraRotationAgleMax + 5;
         }
         else if (eulerAngles.x > cameraRotationAgleMax + 5 && eulerAngles.x < 300)  {
-            Debug.Log("More Than");
+            //Debug.Log("More Than");
             eulerAngles.x = cameraRotationAgleMax + 5;
         }
         mainCamera.transform.eulerAngles = eulerAngles;
@@ -111,10 +111,10 @@ public class CharacterController : MonoBehaviour {
 
         // This hack is here because Unity has weird euler angles that loop around and doens't differentiate between negative and positive sign
         if (eulerAngles.x > 300 && eulerAngles.x - 360 < -cameraRotationAgleMax + 5) {
-            Debug.Log("Less Than");
+            //Debug.Log("Less Than");
             eulerAngles.x = -cameraRotationAgleMax + 5;
         } else if (eulerAngles.x > cameraRotationAgleMax + 5 && eulerAngles.x < 300) {
-            Debug.Log("More Than");
+            //Debug.Log("More Than");
             eulerAngles.x = cameraRotationAgleMax + 5;
         }
 
@@ -227,11 +227,18 @@ public class CharacterController : MonoBehaviour {
     public void InsertPuzzleObject()
     {
         Debug.Log( "puzzle solved, object disappearing" );
-        pickedupItem.SetActive( false );
-        pickedupItem.transform.parent = pickupObjects;
-        // TODO: move the object, inactive, in its initial position..?
-        pickedupItem = null;
-        if ( pickupCrosshair != null )
-            pickupCrosshair.SetActive( true );
+        if ( pickedupItem != null )
+        {
+            pickedupItem.SetActive( false );
+            pickedupItem.transform.parent = pickupObjects;
+            // TODO: move the object, inactive, in its initial position..?
+            pickedupItem = null;
+            if ( pickupCrosshair != null )
+                pickupCrosshair.SetActive( true );
+        }
+        else
+        {
+            Debug.LogWarning( "No picked up object found - though somehow we solved a puzzle :/" );
+        }
     }
 }
