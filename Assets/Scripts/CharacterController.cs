@@ -113,7 +113,7 @@ public class CharacterController : MonoBehaviour {
     private void MovePlayer() {
         Vector3 velocity = rigidbody.velocity;
         float accelaration = speed * Time.fixedDeltaTime;
-
+        int rotation = cameraUp ? 1 : -1;
         Vector3 moveDirection = new Vector3();
 
         // --- Moving Forward / Backward ---
@@ -128,11 +128,11 @@ public class CharacterController : MonoBehaviour {
 
         // --- Moving Left / Right ---
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            moveDirection -= transform.right;
+            moveDirection -= transform.right * rotation;
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow)) {
-            moveDirection += transform.right;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+            moveDirection += transform.right * rotation;
         }
 
         if (moveDirection.sqrMagnitude > 0) {
