@@ -342,7 +342,7 @@ MonoBehaviour:
   pickupPosition: {fileID: 1484728660}
   pickupCrosshair: {fileID: 746356816}
   pickupObjects: {fileID: 0}
-  rayCastDistance: 3
+  rayCastDistance: 4.5
   animator: {fileID: 2689420609512682258}
 --- !u!136 &2689420609963095441
 CapsuleCollider:
