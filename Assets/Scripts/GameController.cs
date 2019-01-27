@@ -6,16 +6,24 @@ public class GameController : MonoBehaviour
     [Header( "Puzzle portraits" )]
     [SerializeField] List<GameObject> puzzlePortraits = new List<GameObject>();
 
+    [Header( "Portrait lights" )]
+    [SerializeField] List<Light> portraitLights = new List<Light>();
+
     [Header( "Puzzle Items" )]
     [SerializeField] List<GameObject> puzzle1Items = new List<GameObject>();
     [SerializeField] List<GameObject> puzzle2Items = new List<GameObject>();
     [SerializeField] List<GameObject> puzzle3Items = new List<GameObject>();
     [SerializeField] List<GameObject> puzzle4Items = new List<GameObject>();
-    [SerializeField] List<GameObject> puzzle5Items = new List<GameObject>();
+    //[SerializeField] List<GameObject> puzzle5Items = new List<GameObject>();
+
+    [Header( "Player" )]
+    [SerializeField] GameObject player;
+    CharacterController characterController;
 
     private void Start()
     {
         ResetPortraits();
+        characterController = player.GetComponent<CharacterController>();
     }
 
     private void ResetPortraits()
@@ -26,8 +34,16 @@ public class GameController : MonoBehaviour
             {
                 portrait.SetActive( false );
             }
-            // activate the first puzzle
-            puzzlePortraits[0].SetActive( true );
+
+            if ( portraitLights.Count > 0 )
+            {
+                foreach ( var light in portraitLights )
+                {
+                    light.gameObject.SetActive( false );
+                }
+            }
+
+            SwitchPortrait( 0, true );
         }
     }
 
@@ -45,8 +61,8 @@ public class GameController : MonoBehaviour
                 goCheck = puzzle3Items; break;
             case 3:
                 goCheck = puzzle4Items; break;
-            case 4:
-                goCheck = puzzle5Items; break;
+            //case 4:
+            //    goCheck = puzzle5Items; break;
             default:
                 goCheck = null; Debug.LogError("something went wrong while checking for puzzle solutions"); break;
         }
@@ -54,16 +70,28 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("you solved the puzzle #" + ( puzzleIndex + 1 ) );
             // to next puzzle
-            puzzlePortraits[puzzleIndex].SetActive( false );
+            SwitchPortrait( puzzleIndex, false );
+            characterController.InsertPuzzleObject();
             if ( puzzleIndex < puzzlePortraits.Count - 1 )
             {
-                puzzlePortraits[puzzleIndex + 1].SetActive( true );
+                SwitchPortrait( puzzleIndex + 1, true );
                 // TODO: remove puzzle piece from the world/hand and setup the new picture in the old portrait
             }
             else
             {
-                Debug.Log( "YOU WIN" );
+                PlayEnding();
             }
         }
+    }
+
+    private void SwitchPortrait(int whichPortrait, bool toActivate)
+    {
+        puzzlePortraits[whichPortrait].SetActive( toActivate );
+        portraitLights[whichPortrait].gameObject.SetActive( toActivate );
+    }
+
+    private void PlayEnding()
+    {
+        Debug.Log( "YOU WIN" );
     }
 }

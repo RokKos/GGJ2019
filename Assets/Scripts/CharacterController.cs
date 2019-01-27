@@ -190,5 +190,14 @@ public class CharacterController : MonoBehaviour {
         }
     }
 
-
+    public void InsertPuzzleObject()
+    {
+        Debug.Log( "puzzle solved, object disappearing" );
+        pickedupItem.SetActive( false );
+        pickedupItem.transform.parent = pickupObjects;
+        // TODO: move the object, inactive, in its initial position..?
+        pickedupItem = null;
+        if ( pickupCrosshair != null )
+            pickupCrosshair.SetActive( true );
+    }
 }
