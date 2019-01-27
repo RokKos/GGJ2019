@@ -22,6 +22,11 @@ public class GameController : MonoBehaviour
     [Header( "Player" )]
     [SerializeField] CharacterController characterController;
 
+    [Header("Player")]
+    [SerializeField] GameObject endSpotLight;
+    [SerializeField] GameObject endPanel;
+
+
     private int currPuzzle = 0;
 
     private void Start()
@@ -108,7 +113,9 @@ public class GameController : MonoBehaviour
     {
         //TODO: do proper endgame stuff
         Debug.Log( "YOU WIN" );
-        UnityEngine.SceneManagement.SceneManager.LoadScene( this.gameObject.scene.buildIndex );
+        endSpotLight.SetActive(true);
+        endPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None; 
     }
 
     public GameObject GetCurrentPuzzlePiece() {

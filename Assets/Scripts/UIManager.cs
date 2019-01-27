@@ -45,4 +45,11 @@ public class UIManager : MonoBehaviour {
     public void ExitGame() {
         Application.Quit();
     }
+
+    public void RestartGame() {
+        Physics.gravity = new Vector3(0, -9.81f, 0);  // Hacky
+        UnityEngine.SceneManagement.SceneManager.LoadScene(this.gameObject.scene.buildIndex);
+    }
+
+    
 }
