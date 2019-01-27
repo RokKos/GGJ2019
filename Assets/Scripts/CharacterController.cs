@@ -90,9 +90,9 @@ public class CharacterController : MonoBehaviour {
     }
 
     private void RotateLight() {
-        int rotation = cameraUp ? -1 : 1;
+        int rotation = cameraUp ? 1 : -1;
         Vector3 eulerAngles = flashLightTransform.eulerAngles;
-        eulerAngles.x += sensitivityY * Input.GetAxis(mouseY);
+        eulerAngles.x += sensitivityY * rotation * Input.GetAxis(mouseY);
 
         // This hack is here because Unity has weird euler angles that loop around and doens't differentiate between negative and positive sign
         if (eulerAngles.x > 300 && eulerAngles.x - 360 < -cameraRotationAgleMax + 5) {
