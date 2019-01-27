@@ -5850,6 +5850,19 @@ PrefabInstance:
       propertyPath: pickupObjects
       value: 
       objectReference: {fileID: 2032482599}
+    - target: {fileID: 746356817, guid: b6f7477a01abc2244bb7087dbaeb6af2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 746356817, guid: b6f7477a01abc2244bb7087dbaeb6af2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 746356818, guid: b6f7477a01abc2244bb7087dbaeb6af2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4696031251018e04a9f9a55cab018b88,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f7477a01abc2244bb7087dbaeb6af2, type: 3}
 --- !u!1001 &3807657760062604459
