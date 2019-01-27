@@ -172,7 +172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484728659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2689420609512682257}
@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf663d6895d3bd641a14756156abcd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
   rigidbody: {fileID: 2689420609963095440}
   speed: 5
   maxMovingVelocity: 10
@@ -356,9 +357,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
-  m_Height: 3.8076653
+  m_Height: 3.5585985
   m_Direction: 1
-  m_Center: {x: 0, y: 0.2761886, z: 0}
+  m_Center: {x: 0, y: 0.40072203, z: 0}
 --- !u!54 &2689420609963095440
 Rigidbody:
   m_ObjectHideFlags: 0

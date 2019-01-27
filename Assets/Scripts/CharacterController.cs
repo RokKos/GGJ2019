@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour {
+    [SerializeField] UIManager uiManager;
+
     [Header("Moving")]
     [SerializeField] Rigidbody rigidbody;
     [SerializeField] float speed;
@@ -51,19 +53,20 @@ public class CharacterController : MonoBehaviour {
     void Start()
     {
         
-        Cursor.lockState = CursorLockMode.Locked;
         cameraUp = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
-        RotatePlayer();
-        RotateCamera();
-        RotateLight();
-        DropItem();
-        PickupItem();
+        if (!uiManager.GetGamePaused()) {
+            MovePlayer();
+            RotatePlayer();
+            RotateCamera();
+            RotateLight();
+            DropItem();
+            PickupItem();
+        }
         //CheckGravity(); Debug only
     }
 
