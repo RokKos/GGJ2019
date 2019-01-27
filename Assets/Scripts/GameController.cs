@@ -6,6 +6,9 @@ public class GameController : MonoBehaviour
     [Header( "Puzzle portraits" )]
     [SerializeField] List<GameObject> puzzlePortraits = new List<GameObject>();
 
+    [Header("Puzzle spites")]
+    [SerializeField] List<GameObject> puzzleSpites = new List<GameObject>();
+
     [Header( "Portrait lights" )]
     [SerializeField] List<Light> portraitLights = new List<Light>();
 
@@ -17,13 +20,11 @@ public class GameController : MonoBehaviour
     //[SerializeField] List<GameObject> puzzle5Items = new List<GameObject>();
 
     [Header( "Player" )]
-    [SerializeField] GameObject player;
-    CharacterController characterController;
+    [SerializeField] CharacterController characterController;
 
     private void Start()
     {
         ResetPortraits();
-        characterController = player.GetComponent<CharacterController>();
     }
 
     private void ResetPortraits()
@@ -34,6 +35,12 @@ public class GameController : MonoBehaviour
             {
                 portrait.SetActive( false );
             }
+
+            foreach (var sprite in puzzleSpites) {
+                sprite.SetActive(false);
+            }
+
+
 
             if ( portraitLights.Count > 0 )
             {
@@ -75,6 +82,8 @@ public class GameController : MonoBehaviour
             if ( puzzleIndex < puzzlePortraits.Count - 1 )
             {
                 SwitchPortrait( puzzleIndex + 1, true );
+
+                characterController.SwitchGravity();
                 // TODO: remove puzzle piece from the world/hand and setup the new picture in the old portrait
             }
             else
@@ -88,6 +97,7 @@ public class GameController : MonoBehaviour
     {
         puzzlePortraits[whichPortrait].SetActive( toActivate );
         portraitLights[whichPortrait].gameObject.SetActive( toActivate );
+        puzzleSpites[whichPortrait].SetActive(toActivate);
     }
 
     private void PlayEnding()

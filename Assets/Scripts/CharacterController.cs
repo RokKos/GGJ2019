@@ -139,15 +139,19 @@ public class CharacterController : MonoBehaviour {
 
     void CheckGravity() {
         if (Input.GetKeyDown(KeyCode.G)) {
-            Physics.gravity = new Vector3(0, -1 * Physics.gravity.y, 0f);
-            if (!cameraUp) {
-                animator.SetTrigger(flipCameraUp);
-            } else{
-                animator.SetTrigger(flipCameraDown);
-            }
-
-            cameraUp = !cameraUp;   
+            SwitchGravity();
         }
+    }
+
+    public void SwitchGravity() {
+        Physics.gravity = new Vector3(0, -1 * Physics.gravity.y, 0f);
+        if (!cameraUp) {
+            animator.SetTrigger(flipCameraUp);
+        } else {
+            animator.SetTrigger(flipCameraDown);
+        }
+
+        cameraUp = !cameraUp;
     }
 
     private void PickupItem()
