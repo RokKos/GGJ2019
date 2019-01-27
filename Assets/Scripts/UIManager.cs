@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     [SerializeField] GameObject MainMenuPanel;
+    [SerializeField] GameObject CreditsPanel;
     [SerializeField] Toggle invertControllsToggle;
 
     [SerializeField] CharacterController characterController;
@@ -51,5 +52,10 @@ public class UIManager : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene(this.gameObject.scene.buildIndex);
     }
 
-    
+
+    public void EnableCredits(bool enable) {
+        MainMenuPanel.SetActive(!enable);
+        CreditsPanel.SetActive(enable);
+    }
+
 }
