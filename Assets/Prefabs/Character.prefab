@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746356817}
   - component: {fileID: 746356818}
+  - component: {fileID: 121782744}
   m_Layer: 2
   m_Name: Crosshair
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 746356816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.1}
   m_Children: []
   m_Father: {fileID: 2689420609512682257}
   m_RootOrder: 1
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 4696031251018e04a9f9a55cab018b88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -79,6 +80,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &121782744
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746356816}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b9043e08a860ba449b36ff006378a3f6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b9043e08a860ba449b36ff006378a3f6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &938265953
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 0}
+  gameController: {fileID: 0}
   rigidbody: {fileID: 2689420609963095440}
   speed: 5
   maxMovingVelocity: 10
@@ -346,6 +364,7 @@ MonoBehaviour:
   pickupObjects: {fileID: 0}
   rayCastDistance: 4.5
   animator: {fileID: 2689420609512682258}
+  cursorAnimation: {fileID: 121782744}
 --- !u!136 &2689420609963095441
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour {
     [SerializeField] UIManager uiManager;
+    [SerializeField] GameController gameController;
 
     [Header("Moving")]
     [SerializeField] Rigidbody rigidbody;
@@ -45,6 +46,9 @@ public class CharacterController : MonoBehaviour {
 
     [Header("Animation")]
     [SerializeField] Animator animator;
+
+    [SerializeField] Animation cursorAnimation;
+
     private const string flipCameraUp = "FlipCameraUp";
     private const string flipCameraDown = "FlipCameraDown";
     private bool cameraUp = true;
@@ -56,7 +60,7 @@ public class CharacterController : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("CheckForPickUp", 0.0f, 0.3f);
         cameraUp = true;
     }
 
@@ -163,6 +167,21 @@ public class CharacterController : MonoBehaviour {
         }
 
         cameraUp = !cameraUp;
+    }
+
+    private void CheckForPickUp() {
+        RaycastHit hit;
+        Vector3 fwd = mainCamera.transform.TransformDirection(Vector3.forward);
+        if (Physics.Raycast(mainCamera.transform.position, fwd, out hit, rayCastDistance)) {
+            if (hit.transform.gameObject.tag == pickupTag && gameController.GetCurrentPuzzlePiece() == hit.transform.gameObject) {
+                if (!cursorAnimation.isPlaying) {
+                    cursorAnimation.Play();
+                }
+            } else {
+                cursorAnimation.Stop();
+            }
+
+        }
     }
 
     private void PickupItem()

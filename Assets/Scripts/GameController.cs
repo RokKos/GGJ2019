@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     [Header( "Player" )]
     [SerializeField] CharacterController characterController;
 
+    private int currPuzzle = 0;
+
     private void Start()
     {
         ResetPortraits();
@@ -29,6 +31,7 @@ public class GameController : MonoBehaviour
 
     private void ResetPortraits()
     {
+        currPuzzle = 0;
         if ( puzzlePortraits.Count > 0 )
         {
             foreach ( var portrait in puzzlePortraits )
@@ -75,6 +78,7 @@ public class GameController : MonoBehaviour
         }
         if ( goCheck != null && goCheck.Contains( collidingObj ) )
         {
+            currPuzzle++;
             Debug.Log("you solved the puzzle #" + ( puzzleIndex + 1 ) );
             // to next puzzle
             SwitchPortrait( puzzleIndex, false );
@@ -103,5 +107,22 @@ public class GameController : MonoBehaviour
     private void PlayEnding()
     {
         Debug.Log( "YOU WIN" );
+    }
+
+    public GameObject GetCurrentPuzzlePiece() {
+        
+        switch (currPuzzle) {
+            case 0:
+                return puzzle1Items[0];
+            case 1:
+                return puzzle2Items[0];
+            case 2:
+                return puzzle3Items[0];
+            case 3:
+                return puzzle4Items[0];
+            default:
+                Debug.LogError("something went wrong while checking for puzzle solutions");
+                return null;
+        }
     }
 }
