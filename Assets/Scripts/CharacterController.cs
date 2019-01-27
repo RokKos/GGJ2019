@@ -22,6 +22,8 @@ public class CharacterController : MonoBehaviour {
 
     [SerializeField] Transform flashLightTransform;
 
+    [SerializeField] int verticalSwitch = -1;
+
 
     [Header( "Pickup" )]
     [Tooltip("Where the picked up object is held.")]
@@ -74,6 +76,7 @@ public class CharacterController : MonoBehaviour {
 
     private void RotateCamera() {
         int rotation = cameraUp ? 1 : -1;
+        rotation *= verticalSwitch;
         Vector3 eulerAngles = mainCamera.transform.eulerAngles;
         eulerAngles.x += sensitivityY * rotation * Input.GetAxis(mouseY);
 
@@ -91,6 +94,7 @@ public class CharacterController : MonoBehaviour {
 
     private void RotateLight() {
         int rotation = cameraUp ? 1 : -1;
+        rotation *= verticalSwitch;
         Vector3 eulerAngles = flashLightTransform.eulerAngles;
         eulerAngles.x += sensitivityY * rotation * Input.GetAxis(mouseY);
 
